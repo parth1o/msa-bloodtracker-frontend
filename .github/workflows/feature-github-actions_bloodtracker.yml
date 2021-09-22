@@ -6,12 +6,15 @@ name: Build and deploy Node.js app to Azure Web App - bloodtracker
 on:
   push:
     branches:
-      - feature/github-actions
+      - main
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
+    default:
+      run:
+        working-directory: "./msa-bloodtracker"
 
     steps:
       - uses: actions/checkout@v2
@@ -53,4 +56,4 @@ jobs:
           app-name: 'bloodtracker'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3AC7773ED4E049F98C0976548AE8C80C }}
-          package: .
+          package: "./msa-bloodtracker/build"
