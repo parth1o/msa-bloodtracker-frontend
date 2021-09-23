@@ -52,7 +52,7 @@ export const SideBar: React.FC<HeaderProps> = ({ user }) => {
             <ListItemText className={classes.listText} primary="Logout" />
           </ListItem> :
           <ListItem button href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`} component={Link}>
-            <ListItemIcon><AddBoxIcon /></ListItemIcon>
+            <ListItemIcon><AddBoxIcon className={classes.listText} /></ListItemIcon>
             <ListItemText className={classes.listText} primary="Login" />
           </ListItem>
 

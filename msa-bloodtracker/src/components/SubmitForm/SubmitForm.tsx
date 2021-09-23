@@ -10,10 +10,25 @@ import './submit-form.css';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
-      "& .MuiFormHelperText-root": {
-        color: "white",
-      }
-    }
+        color:'floralwhite',
+      "& .MuiFilledInput-root": {
+        color: "floralwhite",
+      },
+      '& label.Mui-focused': {
+        color: 'floralwhite',
+      },
+      '& .MuiInputLabel-formControl':{
+          color:'floralwhite',
+        }
+    },
+    header: {
+        fontFamily: 'Ubuntu',
+        fontSize: '2em',
+        color: 'rgb(248, 245, 218)',
+        textAlign:'center',
+        marginBottom:'4vh',
+        marginTop: '4vh',
+    },
   }));
 export interface SubmitFormProps {
 
@@ -37,7 +52,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
     const [addBloodtest] = useMutation<AddBloodtest>(ADD_BLOODTEST)
 
     const handleSubmit = async() => {
-        if (hb !== null) {
+        if (hb != null) {
             try {
                 await addBloodtest({variables: {
                     date: date,
@@ -54,50 +69,56 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
             }
         }else{
             setHasFocus(true);
+            alert("You have to login to add bloodtests")
         }
 
     };
 
     return (
         <Container className="form_container">
-            <Typography variant="h4" >Submit your bloodtest results here!</Typography>
+            <Typography className={classes.header} >Add Bloodtest</Typography>
             {
                 submit ?
-                    <Grid>
-                        Congratulations! Your bloodtest results has been successfully submitted.
-                    </Grid> : null
+                alert("Bloodtest successfully submited :)") : null
             }
             <Grid container spacing={4}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12}>
                     <TextField id="standard-basic" type="date"  fullWidth
-                        error={hasFocus && date === ""}
+                        variant="filled"
+                        InputProps={{ disableUnderline: true }}
                         value={date}
+                        error={hasFocus && date === ""}
                         className={hasFocus && date === ""?"":classes.root}
-                        helperText="Invalid bloodtest date"
+                        
                         onChange={e => setDate(e.target.value)} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" label="Haemaglobin" fullWidth
+                    <TextField id="test" label="Haemaglobin" fullWidth
+                        variant="filled"
+                        color="primary"
                         error={hasFocus && hb === null}
                         value={hb}
+                        InputProps={{ disableUnderline: true }}
                         className={hasFocus && hb === null?"":classes.root}
-                        helperText="Invalid bloodtest hb"
+                        
                         onChange={e => setHb((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField id="standard-basic" label="Platelets" fullWidth
                         error={hasFocus && platelets === null}
                         value={platelets}
+                        InputProps={{ disableUnderline: true }}
                         className={hasFocus && platelets === null?"":classes.root}
-                        helperText="Invalid bloodtest hb"
+                        variant="filled"
                         onChange={e => setPlatelets((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField id="standard-basic" type="number" label="White Blood Cells" fullWidth
                         error={hasFocus && wBC === null}
                         value={wBC}
+                        InputProps={{ disableUnderline: true }}
                         className={hasFocus && wBC === null?"":classes.root}
-                        helperText="Invalid bloodtest wBC"
+                        variant="filled"
                         onChange={e => setWbc((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -105,15 +126,17 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         error={hasFocus && neuts === null}
                         value={neuts}
                         className={hasFocus && neuts === null?"":classes.root}
-                        helperText="Invalid bloodtest neuts"
+                        variant="filled"
+                        InputProps={{ disableUnderline: true }}
                         onChange={e => setNeuts((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField id="standard-basic" type="number" label="Magnesium" fullWidth
                         error={hasFocus && mg === null}
                         value={mg}
+                        InputProps={{ disableUnderline: true }}
                         className={hasFocus && mg === null?"":classes.root}
-                        helperText="Invalid bloodtest mg"
+                        variant="filled"
                         onChange={e => setMg((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -121,12 +144,15 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         error={hasFocus && creatinine === null}
                         value={creatinine}
                         className={hasFocus && creatinine === null?"":classes.root}
-                        helperText="Invalid bloodtest creat"
+                        variant="filled"
+                        InputProps={{ disableUnderline: true }}
                         onChange={e => setCreat((Number(e.target.value)))} />
                 </Grid>
                 
             </Grid>
-            <Button className="form_button" backgroundColor="limegreen" label="Submit" onClick={handleSubmit} primary size="medium" />
+            <Grid container justify="center">
+                <Button className="form_button" label="Add" onClick={handleSubmit} primary size="large" />
+            </Grid>
         </Container>
     );
 };

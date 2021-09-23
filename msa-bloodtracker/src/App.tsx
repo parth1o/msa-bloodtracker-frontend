@@ -21,7 +21,7 @@ function App() {
         </Route>
         <Route
           path="/home"
-          render={() => <FeedPage pageTitle="MSA Projects 2021" />}
+          render={() => <FeedPage pageTitle="Bloodtracker" />}
         />
         <Route path="/submit">
           <SubmitForm />
