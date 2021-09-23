@@ -60,16 +60,16 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
 
     return (
         <Container className="form_container">
-            <Typography variant="h4" >Submit your project here!</Typography>
+            <Typography variant="h4" >Submit your bloodtest results here!</Typography>
             {
                 submit ?
                     <Grid>
-                        Congratulations! Your project has been submitted successfully.
+                        Congratulations! Your bloodtest results has been successfully submitted.
                     </Grid> : null
             }
             <Grid container spacing={4}>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" type="date" label="Project Date" fullWidth
+                    <TextField id="standard-basic" type="date"  fullWidth
                         error={hasFocus && date === ""}
                         value={date}
                         className={hasFocus && date === ""?"":classes.root}
@@ -77,7 +77,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         onChange={e => setDate(e.target.value)} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" label="Project Hb" fullWidth
+                    <TextField id="standard-basic" label="Haemaglobin" fullWidth
                         error={hasFocus && hb === null}
                         value={hb}
                         className={hasFocus && hb === null?"":classes.root}
@@ -85,7 +85,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         onChange={e => setHb((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" label="Project Platelets" fullWidth
+                    <TextField id="standard-basic" label="Platelets" fullWidth
                         error={hasFocus && platelets === null}
                         value={platelets}
                         className={hasFocus && platelets === null?"":classes.root}
@@ -93,7 +93,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         onChange={e => setPlatelets((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" type="number" label="Project WBC" fullWidth
+                    <TextField id="standard-basic" type="number" label="White Blood Cells" fullWidth
                         error={hasFocus && wBC === null}
                         value={wBC}
                         className={hasFocus && wBC === null?"":classes.root}
@@ -101,7 +101,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         onChange={e => setWbc((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" type="number" label="Project Neuts" fullWidth
+                    <TextField id="standard-basic" type="number" label="Neutraphils" fullWidth
                         error={hasFocus && neuts === null}
                         value={neuts}
                         className={hasFocus && neuts === null?"":classes.root}
@@ -109,7 +109,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         onChange={e => setNeuts((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" type="number" label="Project Mg" fullWidth
+                    <TextField id="standard-basic" type="number" label="Magnesium" fullWidth
                         error={hasFocus && mg === null}
                         value={mg}
                         className={hasFocus && mg === null?"":classes.root}
@@ -117,7 +117,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                         onChange={e => setMg((Number(e.target.value)))} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="standard-basic" label="Project Creat" fullWidth
+                    <TextField id="standard-basic" label="Creatinine" fullWidth
                         error={hasFocus && creatinine === null}
                         value={creatinine}
                         className={hasFocus && creatinine === null?"":classes.root}

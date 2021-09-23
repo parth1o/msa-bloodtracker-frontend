@@ -12,7 +12,7 @@ import {
 import { SideBar } from "../Sidebar/Sidebar";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
-import logo from "../../assets/logos/msa_full_neg.svg";
+import bloodlogo from "../../assets/logos/bloodtracker.png";
 import { useHistory, useLocation } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { Self_self } from "../../api/__generated__/Self";
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
     },
     appBar: {
-      backgroundColor: "#5c2d91",
+      backgroundColor: "#cc3434",
       minHeight: "65px",
     },
     menuButton: {
@@ -78,7 +78,7 @@ export interface LoginVariables {
   code: string;
 }
 
-const CLIENT_ID = "a6ac879139cfdf60af2a";
+const CLIENT_ID = "c42515358e300930ae80";
 const REDIRECT_URI = "http://localhost:3000/home";
 
 
@@ -92,6 +92,10 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
   const toggleSideBar = () => {
     setSideBar(!sideBar);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  }
 
   const [login] = useMutation<Login>(LOGIN);
 
@@ -131,10 +135,10 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
             </Drawer>
           </IconButton>
           <IconButton href="/home">
-            <img src={logo} id="logo" width="200px" alt="MSA Logo" />
+            <img src={bloodlogo} id="bloodlogo" width="50px" alt="Bloodtracker Logo" />
           </IconButton>
           <Typography className={classes.title} variant="h5" noWrap>
-            Microsoft Student Accelerator Project Submissions
+            Bloodtracker
           </Typography>
           {user == null ? (
             <Button
@@ -146,7 +150,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
           ) : (
             <div className={classes.userInformation}>
               <Hidden smDown>
-                <Button color="inherit" href="/submit">{user.name}</Button>
+                <Button color="inherit" onClick={handleLogout} href="/home">{user.name}</Button>
               </Hidden>
             </div>
           )}

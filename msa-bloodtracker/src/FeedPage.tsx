@@ -1,6 +1,6 @@
 import { makeStyles, createStyles, CircularProgress, Avatar, Typography } from '@material-ui/core';
 import React from 'react';
-import { CardList, GithubCard, SectionHeader } from './stories';
+import { CardList, GithubCard, SectionHeader } from './components';
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { BLOODTESTS } from './api/queries';
@@ -12,15 +12,19 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 const FeedPageStyles = makeStyles(
   createStyles({
-    header: {
-       
+    spacing:{
+        marginTop:'3vh'
     },
-    page: {
-        
+    graphheading: {
+        marginTop:'-2vh',
+        textAlign:'center',
+        color:'#cc3434',
     },
-    VictoryChart: {
-        
-    }
+    heading:{
+        marginTop:'2vh',
+        textAlign:'center',
+        color:'#cc3434',
+    },
 }));
 
 export interface FeedPageProps {
@@ -55,7 +59,6 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
   var count = 0;
     if(!loading && !error) {
         const check = (data!.bloodtests!.nodes!.map((bloodtest : Bloodtests_bloodtests_nodes) => {
-            if (count !== 10) {
                 arrHb.push(bloodtest.hb)
                 arrPlatelets.push(bloodtest.platelets)
                 arrNeuts.push(bloodtest.neuts)
@@ -65,26 +68,25 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                 arrDate.push(bloodtest.date)
                 arrTest.push(bloodtest.hb.toString())
                 count++
-            }
             
         }))
     }
-    for(let i = 0; i < arrDate.length; i++) {
+    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         hb.push({"x": arrDate[i], "y": arrHb[i]})
     }
-    for(let i = 0; i < arrDate.length; i++) {
+    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         plate.push({"x": arrDate[i], "y": arrPlatelets[i]})
     }
-    for(let i = 0; i < arrDate.length; i++) {
+    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         neuts.push({"x": arrDate[i], "y": arrNeuts[i]})
     }
-    for(let i = 0; i < arrDate.length; i++) {
+    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         creat.push({"x": arrDate[i], "y": arrCreat[i]})
     }
-    for(let i = 0; i < arrDate.length; i++) {
+    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         mg.push({"x": arrDate[i], "y": arrMg[i]})
     }
-    for(let i = 0; i < arrDate.length; i++) {
+    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         wbc.push({"x": arrDate[i], "y": arrWbc[i]})
     }
 
@@ -92,6 +94,9 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
     return <div>
         <Container>
             <Row>
+                <h1 className={styles.heading}>Five most recent bloodtest results:</h1>
+            </Row>
+            <Row className={styles.spacing}>
                 <Col xs={12} lg={4} md={6}>
                    
                     <VictoryChart width={500} height={400}
@@ -100,14 +105,14 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                         <VictoryScatter data={hb}/>
                         <VictoryLine
                             style={{
-                            data: { stroke: "#c43a31" },
+                            data: { stroke: "#cc3434" },
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={hb} 
                         />
                         
                     </VictoryChart>
-                    <p style={{marginTop:'-2vh'}}>Haemaglobin</p>
+                    <p className={styles.graphheading}>Haemaglobin</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
                     
@@ -118,14 +123,14 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                         
                         <VictoryLine
                             style={{
-                            data: { stroke: "#c43a31" },
+                            data: { stroke: "#cc3434" },
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={plate} 
                         />
                         <VictoryScatter data={plate}/>
                     </VictoryChart>
-                    <p style={{marginTop:'-2vh'}}>Platelets</p>
+                    <p className={styles.graphheading}>Platelets</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
                     
@@ -135,18 +140,16 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                         <VictoryScatter data={wbc}/>
                         <VictoryLine
                             style={{
-                            data: { stroke: "#c43a31" },
+                            data: { stroke: "#cc3434" },
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={wbc} 
                         />
                         
                     </VictoryChart>
-                    <p style={{marginTop:'-2vh'}}>White Blood Cells</p>
+                    <p className={styles.graphheading}>White Blood Cells</p>
                 </Col>
-            </Row>
-            
-            <Row>
+
             <Col xs={12} lg={4} md={6}>
                     
                     <VictoryChart width={500} height={400}
@@ -155,14 +158,14 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                         <VictoryScatter data={neuts}/>
                         <VictoryLine
                             style={{
-                            data: { stroke: "#c43a31" },
+                            data: { stroke: "#cc3434" },
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={neuts} 
                         />
                         
                     </VictoryChart>
-                    <p style={{marginTop:'-2vh'}}>Neutrophils</p>
+                    <p className={styles.graphheading}>Neutrophils</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
                     <VictoryChart width={500} height={400}
@@ -171,13 +174,13 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                         <VictoryScatter data={mg}/>
                         <VictoryLine
                             style={{
-                            data: { stroke: "#c43a31" },
+                            data: { stroke: "#cc3434" },
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={mg} 
                         />
                     </VictoryChart>
-                    <p style={{marginTop:'-2vh'}}>Magnesium</p>
+                    <p className={styles.graphheading}>Magnesium</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
                     
@@ -187,14 +190,14 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
                         <VictoryScatter data={creat}/>
                         <VictoryLine
                             style={{
-                            data: { stroke: "#c43a31" },
+                            data: { stroke: "#cc3434" },
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={creat} 
                         />
                         
                     </VictoryChart>
-                    <p style={{marginTop:'-2vh'}}>Creatinine</p>
+                    <p className={styles.graphheading}>Creatinine</p>
                 </Col>
             </Row>
         </Container>
