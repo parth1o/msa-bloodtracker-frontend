@@ -1,11 +1,9 @@
 import { makeStyles, createStyles} from '@material-ui/core';
 import React from 'react';
-import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { BLOODTESTS } from './api/queries';
 import { Bloodtests,Bloodtests_bloodtests_nodes } from './api/__generated__/Bloodtests';
-import ReactDOM from 'react-dom';
-import { VictoryLine, VictoryChart, VictoryTheme, VictoryBar, VictoryLabel, VictoryAxis, VictoryContainer, VictoryScatter } from 'victory';
+import { VictoryLine, VictoryChart, VictoryTheme, VictoryScatter } from 'victory';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Row } from 'react-bootstrap';
 
@@ -50,8 +48,7 @@ const HomePage = (): JSX.Element => {
   let mg = []
 
 
-    //create new object
-  var count = 0;
+    
     if(!loading && !error) {
         const check = (data!.bloodtests!.nodes!.map((bloodtest : Bloodtests_bloodtests_nodes) => {
                 arrHb.push(bloodtest.hb)
@@ -62,7 +59,6 @@ const HomePage = (): JSX.Element => {
                 arrCreat.push(bloodtest.creatinine)
                 arrDate.push(bloodtest.date)
                 arrTest.push(bloodtest.hb.toString())
-                count++
             
         }))
     }

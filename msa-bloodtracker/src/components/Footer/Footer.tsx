@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Hidden, Link } from "@material-ui/core";
+import {Grid, Hidden } from "@material-ui/core";
 
 
 import "./footer.css";

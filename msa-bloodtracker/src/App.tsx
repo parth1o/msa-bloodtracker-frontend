@@ -10,7 +10,7 @@ import { Self } from "./api/__generated__/Self";
 import "./App.css";
 
 function App() {
-  const { loading, error, data } = useQuery<Self>(SELF);
+  const { data } = useQuery<Self>(SELF);
 
   return (
     <div className="App">
