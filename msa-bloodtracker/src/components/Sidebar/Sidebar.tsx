@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 const CLIENT_ID = "c42515358e300930ae80";
-const REDIRECT_URI = "http://localhost:3000/home";
+const REDIRECT_URI = "https://bloodtracker.azurewebsites.net/home";
 
 export const SideBar: React.FC<HeaderProps> = ({ user }) => {
   const classes = useStyles();
