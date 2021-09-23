@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../App.css";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
@@ -39,6 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(2),
     },
     title: {
+      fontFamily: 'Ubuntu',
       flexGrow: 1,
       marginRight: "200px",
     },
@@ -138,10 +140,11 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
             <img src={bloodlogo} id="bloodlogo" width="50px" alt="Bloodtracker Logo" />
           </IconButton>
           <Typography className={classes.title} variant="h5" noWrap>
-            Bloodtracker
+            BloodTracker
           </Typography>
           {user == null ? (
             <Button
+              variant="outlined"
               color="inherit"
               href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`}
             >
@@ -150,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
           ) : (
             <div className={classes.userInformation}>
               <Hidden smDown>
-                <Button color="inherit" onClick={handleLogout} href="/home">{user.name}</Button>
+                <Button color="inherit" variant="outlined" onClick={handleLogout} href="/home">Logout: {user.name}</Button>
               </Hidden>
             </div>
           )}
