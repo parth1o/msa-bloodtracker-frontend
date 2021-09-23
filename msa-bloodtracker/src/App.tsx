@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Redirect, Route, Switch } from "react-router";
+import { Header }  from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer";
+import {BloodtestForm} from "./components/BloodtestForm/BloodtestForm"
+import HomePage from "./HomePage";
+import { useQuery } from "@apollo/client";
+import { SELF } from "./api/queries";
+import { Self } from "./api/__generated__/Self";
+import "./App.css";
 
 function App() {
+  const { loading, error, data } = useQuery<Self>(SELF);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Test <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header user={data?.self} />
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route
+          path="/home"
+          render={() => <HomePage />}
+        />
+        <Route path="/addbloodtest">
+          <BloodtestForm />
+        </Route>
+      </Switch>
+      <Footer />
     </div>
+    
   );
 }
 

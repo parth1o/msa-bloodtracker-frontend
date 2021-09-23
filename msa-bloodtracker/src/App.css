@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 .App {
-  text-align: center;
+  background-color:rgb(248, 245, 218) !important;
+  height: 100vh !important;
+  font-family: Roboto, Ubuntu;
+  overflow: auto;
 }
 
 .App-logo {
@@ -14,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #cc3434;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
