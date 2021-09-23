@@ -9,12 +9,17 @@ import { HeaderProps } from '../Header/Header';
 const useStyles = makeStyles({
   list: {
     width: 250,
+    height: '100vh',
+    backgroundColor:"#cc3434",
   },
   listText: {
-    color: "black"
+    color: "floralwhite",
   },
   fullList: {
     width: 'auto',
+  },
+  divider:{
+    backgroundColor: 'floralwhite'
   },
 });
 
@@ -30,19 +35,20 @@ export const SideBar: React.FC<HeaderProps> = ({ user }) => {
     <div className={classes.list}>
       <List>
         <ListItem button href="/" component={Link}>
-          <ListItemIcon><HomeIcon /></ListItemIcon>
+          <ListItemIcon><HomeIcon className={classes.listText} /></ListItemIcon>
           <ListItemText className={classes.listText} primary="Home" />
         </ListItem>
+        
         <ListItem button href="/submit" component={Link}>
-          <ListItemIcon><ArrowUpwardIcon /></ListItemIcon>
-          <ListItemText className={classes.listText} primary="Submit" />
+          <ListItemIcon><ArrowUpwardIcon className={classes.listText} /></ListItemIcon>
+          <ListItemText className={classes.listText} primary="Add Bloodtest" />
         </ListItem>
       </List>
-      <Divider />
+      <Divider className={classes.divider} />
       <List>
         {user ?
           <ListItem button href="/home" component={Link} onClick={handleLogout}>
-            <ListItemIcon><ExitToAppIcon /></ListItemIcon>
+            <ListItemIcon><ExitToAppIcon className={classes.listText} /></ListItemIcon>
             <ListItemText className={classes.listText} primary="Logout" />
           </ListItem> :
           <ListItem button href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`} component={Link}>

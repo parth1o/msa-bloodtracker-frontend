@@ -1,6 +1,6 @@
 import { makeStyles, createStyles, CircularProgress, Avatar, Typography } from '@material-ui/core';
 import React from 'react';
-import { CardList, GithubCard, SectionHeader } from './components';
+import { CardList, GithubCard } from './components';
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { BLOODTESTS } from './api/queries';

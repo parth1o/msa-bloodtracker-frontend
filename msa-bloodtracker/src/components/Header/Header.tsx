@@ -56,6 +56,13 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       display: "flex",
     },
+    check:{
+      color: '#fff',
+      '&:hover': {
+        backgroundColor: '#fff',
+        color: '#cc3434',
+      }
+    }
   })
 );
 export interface Login_login_patient {
@@ -144,6 +151,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
           </Typography>
           {user == null ? (
             <Button
+            className={classes.check}
               variant="outlined"
               color="inherit"
               href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`}
@@ -153,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({ user }) => {
           ) : (
             <div className={classes.userInformation}>
               <Hidden smDown>
-                <Button color="inherit" variant="outlined" onClick={handleLogout} href="/home">Logout: {user.name}</Button>
+                <Button className={classes.check} color="inherit" variant="outlined" onClick={handleLogout} href="/home">Logout: {user.name}</Button>
               </Hidden>
             </div>
           )}
