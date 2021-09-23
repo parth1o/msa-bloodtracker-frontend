@@ -1,6 +1,5 @@
-import { makeStyles, createStyles, CircularProgress, Avatar, Typography } from '@material-ui/core';
+import { makeStyles, createStyles} from '@material-ui/core';
 import React from 'react';
-import { CardList, GithubCard } from './components';
 import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { BLOODTESTS } from './api/queries';
@@ -10,7 +9,7 @@ import { VictoryLine, VictoryChart, VictoryTheme, VictoryBar, VictoryLabel, Vict
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Row } from 'react-bootstrap';
 
-const FeedPageStyles = makeStyles(
+const HomePageStyles = makeStyles(
   createStyles({
     spacing:{
         marginTop:'3vh'
@@ -27,15 +26,11 @@ const FeedPageStyles = makeStyles(
     },
 }));
 
-export interface FeedPageProps {
-  pageTitle: string;
-}
 
-const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
-  const [cards, setCards] = React.useState<JSX.Element[]>([]);
-  
+
+const HomePage = (): JSX.Element => {  
   const {loading, error, data} = useQuery<Bloodtests>(BLOODTESTS)
-  const styles = FeedPageStyles();
+  const styles = HomePageStyles();
 
   let arrHb: Array<number> = []
   let arrPlatelets: Array<number> = []
@@ -206,4 +201,4 @@ const FeedPage = ({ pageTitle }: FeedPageProps): JSX.Element => {
   
 };
 
-export default FeedPage;
+export default HomePage;

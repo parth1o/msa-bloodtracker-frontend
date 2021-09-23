@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+.form_container {
+    margin-top: 8vh !important;
+    max-width: 600px !important;
+    margin: auto;
+    padding: 15px;
+    background-color:#cc3434 !important;
+}
+
+.form_button {
+    margin-top: 6vh !important;
+    margin-bottom: 6vh !important;
+    background-color:floralwhite !important;
+    color: #cc3434 !important;
+    width: 5vw !important;
+    font-family: Ubuntu !important;
+}
+

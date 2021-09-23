@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { TextField, Typography, Grid, Container } from '@material-ui/core';
+import { Button,TextField, Typography, Grid, Container } from '@material-ui/core';
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import { Button } from '../Button/Button';
+
 import { ADD_BLOODTEST} from '../../api/mutations';
 import { AddBloodtest } from '../../api/__generated__/AddBloodtest';
 import { useMutation } from '@apollo/client';
 
-import './submit-form.css';
+import './bloodtest-form.css';
 
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme: Theme) => ({
         marginTop: '4vh',
     },
   }));
-export interface SubmitFormProps {
+export interface BloodtestFormProps {
 
 }
 
-export const SubmitForm: React.FC<SubmitFormProps> = () => {
+export const BloodtestForm: React.FC<BloodtestFormProps> = () => {
     const classes = useStyles();
     const [date, setDate] = useState<string>("");
     const [hb, setHb] = useState<number>();
@@ -151,7 +151,7 @@ export const SubmitForm: React.FC<SubmitFormProps> = () => {
                 
             </Grid>
             <Grid container justify="center">
-                <Button className="form_button" label="Add" onClick={handleSubmit} primary size="large" />
+                <Button className="form_button" onClick={handleSubmit}>Add</Button>
             </Grid>
         </Container>
     );

@@ -3,7 +3,6 @@ import "../../App.css";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import {
   AppBar,
-  Avatar,
   Drawer,
   Hidden,
   IconButton,

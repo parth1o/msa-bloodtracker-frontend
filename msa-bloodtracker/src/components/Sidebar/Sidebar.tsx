@@ -39,7 +39,7 @@ export const SideBar: React.FC<HeaderProps> = ({ user }) => {
           <ListItemText className={classes.listText} primary="Home" />
         </ListItem>
         
-        <ListItem button href="/submit" component={Link}>
+        <ListItem button href="/addbloodtest" component={Link}>
           <ListItemIcon><ArrowUpwardIcon className={classes.listText} /></ListItemIcon>
           <ListItemText className={classes.listText} primary="Add Bloodtest" />
         </ListItem>

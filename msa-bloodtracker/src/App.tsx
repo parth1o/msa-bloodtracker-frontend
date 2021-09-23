@@ -2,8 +2,8 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router";
 import { Header }  from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import {SubmitForm} from "./components/SubmitForm/SubmitForm"
-import FeedPage from "./FeedPage";
+import {BloodtestForm} from "./components/BloodtestForm/BloodtestForm"
+import HomePage from "./HomePage";
 import { useQuery } from "@apollo/client";
 import { SELF } from "./api/queries";
 import { Self } from "./api/__generated__/Self";
@@ -21,14 +21,15 @@ function App() {
         </Route>
         <Route
           path="/home"
-          render={() => <FeedPage pageTitle="Bloodtracker" />}
+          render={() => <HomePage />}
         />
-        <Route path="/submit">
-          <SubmitForm />
+        <Route path="/addbloodtest">
+          <BloodtestForm />
         </Route>
       </Switch>
       <Footer />
     </div>
+    
   );
 }
 
