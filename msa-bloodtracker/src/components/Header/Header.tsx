@@ -87,7 +87,7 @@ export interface LoginVariables {
 }
 
 const CLIENT_ID = "c42515358e300930ae80";
-const REDIRECT_URI = "https://bloodtracker.azurewebsites.net/home";
+const REDIRECT_URI = "http://localhost:3000/home";
 
 
 export const Header: React.FC<HeaderProps> = ({ user }) => {

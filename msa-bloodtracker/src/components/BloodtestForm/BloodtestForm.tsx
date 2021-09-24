@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Button,TextField, Typography, Grid, Container } from '@material-ui/core';
 import { makeStyles, Theme } from "@material-ui/core/styles";
-
 import { ADD_BLOODTEST} from '../../api/mutations';
 import { AddBloodtest } from '../../api/__generated__/AddBloodtest';
 import { useMutation } from '@apollo/client';
-
 import './bloodtest-form.css';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -43,12 +41,8 @@ export const BloodtestForm: React.FC<BloodtestFormProps> = () => {
     const [neuts, setNeuts] = useState<number>();
     const [creatinine, setCreat] = useState<number>();
     const [mg, setMg] = useState<number>();
-
-
     const [submit, setSubmit] = useState(false);
-
     const [hasFocus, setHasFocus] = useState(false);
-
     const [addBloodtest] = useMutation<AddBloodtest>(ADD_BLOODTEST)
 
     const handleSubmit = async() => {
@@ -69,7 +63,7 @@ export const BloodtestForm: React.FC<BloodtestFormProps> = () => {
             }
         }else{
             setHasFocus(true);
-            alert("You have to login to add bloodtests")
+            alert("You must fill all the fields and be logged in to add bloodtests")
         }
 
     };

@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 const CLIENT_ID = "c42515358e300930ae80";
-const REDIRECT_URI = "https://bloodtracker.azurewebsites.net/home";
+const REDIRECT_URI = "http://localhost:3000/home";
 
 export const SideBar: React.FC<HeaderProps> = ({ user }) => {
   const classes = useStyles();
@@ -55,7 +55,6 @@ export const SideBar: React.FC<HeaderProps> = ({ user }) => {
             <ListItemIcon><AddBoxIcon className={classes.listText} /></ListItemIcon>
             <ListItemText className={classes.listText} primary="Login" />
           </ListItem>
-
         }
       </List>
     </div>
