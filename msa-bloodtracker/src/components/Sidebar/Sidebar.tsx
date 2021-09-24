@@ -55,7 +55,6 @@ export const SideBar: React.FC<HeaderProps> = ({ user }) => {
             <ListItemIcon><AddBoxIcon className={classes.listText} /></ListItemIcon>
             <ListItemText className={classes.listText} primary="Login" />
           </ListItem>
-
         }
       </List>
     </div>

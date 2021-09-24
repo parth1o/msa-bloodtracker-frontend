@@ -1,5 +1,4 @@
 import { makeStyles, createStyles} from '@material-ui/core';
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import { BLOODTESTS } from './api/queries';
 import { Bloodtests,Bloodtests_bloodtests_nodes } from './api/__generated__/Bloodtests';
@@ -47,7 +46,6 @@ const HomePage = (): JSX.Element => {
   let creat = []
   let mg = []
 
-
     
     if(!loading && !error) {
         const check = (data!.bloodtests!.nodes!.map((bloodtest : Bloodtests_bloodtests_nodes) => {
@@ -64,23 +62,12 @@ const HomePage = (): JSX.Element => {
     }
     for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         hb.push({"x": arrDate[i], "y": arrHb[i]})
-    }
-    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         plate.push({"x": arrDate[i], "y": arrPlatelets[i]})
-    }
-    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         neuts.push({"x": arrDate[i], "y": arrNeuts[i]})
-    }
-    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         creat.push({"x": arrDate[i], "y": arrCreat[i]})
-    }
-    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         mg.push({"x": arrDate[i], "y": arrMg[i]})
-    }
-    for(let i = arrDate.length-5>=0?arrDate.length-5:0; i < arrDate.length; i++) {
         wbc.push({"x": arrDate[i], "y": arrWbc[i]})
     }
-
 
     return <div>
         <Container>
@@ -88,8 +75,7 @@ const HomePage = (): JSX.Element => {
                 <h1 className={styles.heading}>Five most recent bloodtest results:</h1>
             </Row>
             <Row className={styles.spacing}>
-                <Col xs={12} lg={4} md={6}>
-                   
+                <Col xs={12} lg={4} md={6}>   
                     <VictoryChart width={500} height={400}
                     theme={VictoryTheme.material}
                     >
@@ -100,18 +86,14 @@ const HomePage = (): JSX.Element => {
                             parent: { border: "1px solid #ccc"},
                             }}
                             data={hb} 
-                        />
-                        
+                        />  
                     </VictoryChart>
                     <p className={styles.graphheading}>Haemaglobin</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
-                    
                     <VictoryChart width={500} height={400}
-                    
                     theme={VictoryTheme.material}
                     >
-                        
                         <VictoryLine
                             style={{
                             data: { stroke: "#cc3434" },
@@ -124,7 +106,6 @@ const HomePage = (): JSX.Element => {
                     <p className={styles.graphheading}>Platelets</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
-                    
                     <VictoryChart width={500} height={400}
                     theme={VictoryTheme.material}
                     >
@@ -136,13 +117,10 @@ const HomePage = (): JSX.Element => {
                             }}
                             data={wbc} 
                         />
-                        
                     </VictoryChart>
                     <p className={styles.graphheading}>White Blood Cells</p>
                 </Col>
-
-            <Col xs={12} lg={4} md={6}>
-                    
+                <Col xs={12} lg={4} md={6}>
                     <VictoryChart width={500} height={400}
                     theme={VictoryTheme.material}
                     >
@@ -154,7 +132,6 @@ const HomePage = (): JSX.Element => {
                             }}
                             data={neuts} 
                         />
-                        
                     </VictoryChart>
                     <p className={styles.graphheading}>Neutrophils</p>
                 </Col>
@@ -174,7 +151,6 @@ const HomePage = (): JSX.Element => {
                     <p className={styles.graphheading}>Magnesium</p>
                 </Col>
                 <Col xs={12} lg={4} md={6}>
-                    
                     <VictoryChart width={500} height={400}
                     theme={VictoryTheme.material}
                     >
@@ -186,7 +162,6 @@ const HomePage = (): JSX.Element => {
                             }}
                             data={creat} 
                         />
-                        
                     </VictoryChart>
                     <p className={styles.graphheading}>Creatinine</p>
                 </Col>
